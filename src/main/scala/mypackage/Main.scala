@@ -6,27 +6,14 @@ import com.fasterxml.jackson.module.scala.experimental.ScalaObjectMapper
 
 case class XY(x: Double = 0, y: Double = 0)
 
-trait Abstract {
-  type Vector2f
-
-  trait ConstructVector2f {
-    def apply(x: Double, y: Double): Vector2f
-  }
-  implicit val Vector2f: ConstructVector2f
-}
-
-object Concrete extends Abstract {
-  type Vector2f = XY
-  object Vector2f extends ConstructVector2f {
-    def apply(x: Double, y: Double) = XY(x, y)
-  }
-}
-
 object Abstract {
-  val Link: Abstract = Concrete
+  final case class Vector2f(v: XY) extends AnyVal
+  object Vector2f {
+    def apply(x: Double, y: Double) = new Vector2f(XY(x, y))
+  }
 }
 
-import Abstract.Link.Vector2f
+import Abstract.Vector2f
 
 case class Container(from: Vector2f)
 
