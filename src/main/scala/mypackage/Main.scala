@@ -1,6 +1,7 @@
 package mypackage
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import com.fasterxml.jackson.module.scala.experimental.ScalaObjectMapper
 
@@ -28,7 +29,7 @@ object Abstract {
 
 import Abstract.Link.Vector2f
 
-case class Container(from: Vector2f)
+case class Container(@JsonDeserialize(as=classOf[XY]) from: Vector2f)
 
 object Main extends App {
 
