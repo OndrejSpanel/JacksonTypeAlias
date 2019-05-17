@@ -2,13 +2,14 @@ name := "JacksonTypeAlias"
 
 version := "0.1"
 
-scalaVersion := "2.11.12"
+scalaVersion := "2.12.8"
 
+val circeVersion = "0.11.1"
 
-val jacksonVersion = "2.9.6"
+libraryDependencies += "io.circe" %% "circe-core" % circeVersion
 
-libraryDependencies += "com.fasterxml.jackson.core" % "jackson-databind" % jacksonVersion
+libraryDependencies += "io.circe" %% "circe-generic" % circeVersion
 
-libraryDependencies += "com.fasterxml.jackson.module" %% "jackson-module-scala" % jacksonVersion
+libraryDependencies += "io.circe" %% "circe-parser" % circeVersion
 
-libraryDependencies += "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % jacksonVersion
+libraryDependencies += "io.circe" %% "circe-generic-extras" % circeVersion
